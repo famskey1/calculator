@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐟Fishculator!🐟</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>🐟Fishculator!🐟</h1>
+    <img src = "./fishes.gif" class ="images"/>
+    <div class = "container">
+        <input type="text" class ="display" placeholder="0" autofocus>
+        <div class = "buttons">
+            <button class = "operator" id="procent" onclick="precent()">%</button>
+            <button class = "operator" id="del_null" onclick="erase()">C</button>
+            <button class = "operator" id="full_del" onclick="erasehistory()">CE</button>
+            <button class = "operator" id="del_one" onclick="deleteOne()">DEL</button>
+            <button class = "operator" id="del_1_x" onclick="deleteX()">1/x</button>
+            <button class = "operator" id="pow" onclick="multiply()">x^2</button>
+            <button class = "operator" id="sqrt2" onclick="sqrt()">√</button>
+            <button class = "operator" id="dilit" onclick="addChar('/')">/</button>
+
+            <button id="1" onclick="addNumber('7')">7</button>
+            <button id="1" onclick="addNumber('8')">8</button>
+            <button id="1" onclick="addNumber('9')">9</button>
+            
+            <button class = "operator" id="multiply" onclick="addChar('*')">*</button>
+
+            <button id="1" onclick="addNumber('4')">4</button>
+            <button id="1" onclick="addNumber('5')">5</button>
+            <button id="1" onclick="addNumber('6')">6</button>
+
+            <button class = "operator" id="minus" onclick="addChar('-')">-</button>
+
+            <button id="1" onclick="addNumber('1')">1</button>
+            <button id="1" onclick="addNumber('2')">2</button>
+            <button id="1" onclick="addNumber('3')">3</button>
+
+            <button class = "operator" id="plus" onclick="addChar('+')">+</button>
+            <button class = "operator" id="negate" onclick="Nigate()">+/-</button>
+            <button id="1" onclick="addNumber('0')">0</button>
+            <button id="float" onclick="addChar('.')">.</button>
+            <button class = "operator"  id="submit" onclick="calculate()">=</button>
+        </div>  
+    </div>
+    <div class="containerhis">
+        <textarea class ="historycalc" readonly></textarea>
+    </div>
+    <img src = "./fish2.gif" alt="Рыбки" class ="images"/>
+    <script src = "./script.js"></script>
+</body>
+</html>
