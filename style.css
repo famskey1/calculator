@@ -54,28 +54,21 @@ body {
 .operator {
     color: blue;
 }
-.containerhis{
+.historycalc{
+    height: 480px;
+    max-width: 100%;
+    text-align: right;
+    border: none;
+    font-size: 20px;
+    color: black;
+    caret-color: transparent;
+    padding: 15px 15px;
     display: flex;
     position: relative;
-    height: 460px;
-    width: 100%;
-    max-width: 250px;
     border-radius: 12px;
     background: white;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     margin-left: 20px;
-}
-.historycalc{
-    height: 100%;
-    width: 100%;
-    text-align: right;
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: black;
-    caret-color: transparent;
-    padding: 15px 15px
 }
 h1{
     height: 100px;

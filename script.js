@@ -1,7 +1,7 @@
 const display = document.querySelector(".display");
 const buttons= document.querySelectorAll(".button");
 const history = document.querySelector(".historycalc");
-let decision = "";
+
 let output = "";
 const addNumber = (num) => {
     display.value += num;
@@ -12,60 +12,110 @@ const addChar = (char) => {
 }
 
 const erase = () =>{
-    display.value = null;
+    display.value = "";
 };
 
 const erasehistory = () =>{
-    history.value = null;
+    history.value = "";
 }
 
 const deleteOne = () =>{
-    display.value = display.value.toString().slice(0, -1);
+    display.value = display.value.slice(0, -1);
 };
 
-const deleteX = () =>{
-    history.value += `\n1/(${display.value.toString()}) `;
-    display.value = eval(1/eval(display.value));
-    decision = display.value;
-    history.value += `= ${decision}\n`;
+const multiply_1 = () =>{
+    try {
+        const value = eval(display.value);
+        if (isNaN(value) || !isFinite(value) || value === 0) {
+            display.value = "🐟???";
+            return;
+        }
+        const result = 1 / value;
+        history.value += `\n1/(${display.value}) = ${result}\n`;
+        display.value = result;
+    } catch (error) {
+        display.value = "🐟???";
+        console.error("Ошибка при вычислении 1/x:", error);
+    }
 }
 
 const multiply = ()=>{
-    history.value += `\n(${display.value.toString()})^2 `;
-    display.value = eval(display.value)**2;
-    decision = eval(display.value);
-    history.value += `= ${decision}\n`;
+    try {
+        const value = eval(display.value);
+        if (isNaN(value) || !isFinite(value)) {
+            display.value = "🐟???";
+            return;
+        }
+        const result = value * value;
+        history.value += `\n(${display.value})^2 = ${result}\n`;
+        display.value = result;
+    } catch (error) {
+        display.value = "🐟???";
+        console.error("Ошибка при вычислении x^2:", error);
+    }
 }
 const sqrt = () =>{
-    history.value += `\n√(${display.value.toString()}) `;
-    display.value = Math.sqrt(eval(display.value), 2);
-    decision = eval(display.value);
-    history.value += `= ${decision}\n`;
+    try {
+        const value = eval(display.value);
+        if (isNaN(value) || !isFinite(value) || value < 0) {
+            display.value = "🐟???";
+            return;
+        }
+        const result = Math.sqrt(value);
+        history.value += `\n√(${display.value}) = ${result}\n`;
+        display.value = result;
+    } catch (error) {
+        display.value = "🐟???";
+        console.error("Ошибка при вычислении √x:", error);
+    }
 }
 const Nigate = () =>{
-    history.value += `\n(${display.value.toString()})*-1 `;
-    display.value = eval(display.value)*-1;
-    decision = eval(display.value);
-    history.value += `= ${decision}\n`;
+    try {
+        const value = eval(display.value);
+        if (isNaN(value) || !isFinite(value)) {
+            display.value = "🐟???";
+            return;
+        }
+        const result = value * -1;
+        history.value += `\n-(${display.value}) = ${result}\n`;
+        display.value = result;
+    } catch (error) {
+        display.value = "🐟???";
+        console.error("Ошибка при вычислении -x:", error);
+    }
 }
 const precent = () =>{
-    history.value += `\n(${display.value.toString()})% `;
-    display.value = eval(display.value)/100;
-    decision = eval(display.value);
-    history.value += `= ${decision}\n`;
+    try {
+        const value = eval(display.value);
+        if (isNaN(value) || !isFinite(value)) {
+            display.value = "🐟???";
+            return;
+        }
+        const result = value / 100;
+        history.value += `\n(${display.value})% = ${result}\n`;
+        display.value = result;
+    } catch (error) {
+        display.value = "🐟???";
+        console.error("Ошибка при вычислении %:", error);
+    }
 }
 const calculate = () => {
     display.focus();
-    if(display.value.includes(undefined) || display.value.includes(NaN)||display.value.includes(null)){
-        alert("😭🐟???");
-    }
-    else{
-        history.value += `\n${display.value.toString()} `;
-        decision = eval(display.value);
-        history.value += `= ${decision}\n`;
-        display.value = decision;
-    }
-    
+    try {
+        const expression = display.value; 
+        const result = eval(expression); 
+
+        if (isNaN(result) || !isFinite(result)) { 
+            display.value = "🐟???"; 
+            return; 
+        }
+
+        history.value += `\n${expression} = ${result}\n`; 
+        display.value = result; 
+    } catch (error) {
+        display.value = "🐟???"; 
+        console.error("Ошибка при вычислении:", error); 
+        }
 };
 
 document.addEventListener('keydown', function(event){
